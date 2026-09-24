@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IPv4 Subnet Calculator – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Calculate IPv4 network address, broadcast address, usable hosts, subnet mask, wildcard mask, and CIDR information with the free NetEngToolkit subnet calculator." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/subnet-calculator/" />
+<meta property="og:title" content="IPv4 Subnet Calculator – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Calculate IPv4 network address, broadcast address, usable hosts, subnet mask, wildcard mask, and CIDR information with the free NetEngToolkit subnet calculator." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/subnet-calculator/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>IPv4 Subnet Calculator</span>
+</nav>
+<h1>🧮 IPv4 Subnet Calculator</h1>
+<p class="lede">Enter an IPv4 address with a CIDR prefix or subnet mask to get the full breakdown: network, broadcast, usable range, wildcard mask, and binary form. Handles /31 and /32 correctly.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field">
+      <label for="ip-input">IP address (with optional /CIDR)</label>
+      <input type="text" id="ip-input" name="ip" placeholder="192.168.1.10 or 192.168.1.10/24" autocomplete="off" required />
+    </div>
+    <div class="field" id="mask-field">
+      <label for="mask-input">Subnet mask or CIDR prefix (optional if included above)</label>
+      <input type="text" id="mask-input" name="mask" placeholder="255.255.255.0 or 24" autocomplete="off" />
+      <p class="hint">You can enter the CIDR inline above (e.g. 192.168.1.10/24) or provide a mask/prefix here.</p>
+    </div>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <div class="result-grid" id="result-grid">
+      
+      <div class="result-item"><div class="label">IP Address</div><div class="value" id="res-ip">—</div></div>
+      <div class="result-item"><div class="label">CIDR</div><div class="value" id="res-cidr">—</div></div>
+      <div class="result-item"><div class="label">Subnet Mask</div><div class="value" id="res-mask">—</div></div>
+      <div class="result-item"><div class="label">Network Address</div><div class="value" id="res-network">—</div></div>
+      <div class="result-item"><div class="label">Broadcast Address</div><div class="value" id="res-broadcast">—</div></div>
+      <div class="result-item"><div class="label">First Usable</div><div class="value" id="res-first">—</div></div>
+      <div class="result-item"><div class="label">Last Usable</div><div class="value" id="res-last">—</div></div>
+      <div class="result-item"><div class="label">Total Addresses</div><div class="value" id="res-total">—</div></div>
+      <div class="result-item"><div class="label">Usable Addresses</div><div class="value" id="res-usable">—</div></div>
+      <div class="result-item"><div class="label">Address Class</div><div class="value" id="res-class">—</div></div>
+      <div class="result-item"><div class="label">Wildcard Mask</div><div class="value" id="res-wildcard">—</div></div>
+    </div>
+    <div id="special-note" class="alert alert-warning" style="display:none;"></div>
+    <h3>Binary Representation</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Field</th><th>Binary</th></tr></thead>
+        <tbody>
+          <tr><td>IP Address</td><td class="mono" id="bin-ip">—</td></tr>
+          <tr><td>Subnet Mask</td><td class="mono" id="bin-mask">—</td></tr>
+          <tr><td>Network</td><td class="mono" id="bin-network">—</td></tr>
+          <tr><td>Broadcast</td><td class="mono" id="bin-broadcast">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>The calculator combines your IP address with the subnet mask (converted from CIDR if needed) using a bitwise AND to find the network address, then inverts the mask to find the broadcast address. Everything between those two — minus the network and broadcast themselves — is the usable host range.</p>
+    <p><strong>Special cases:</strong> a /31 network (RFC 3021) has no separate network or broadcast address — both addresses are usable, commonly used for point-to-point links. A /32 identifies exactly one host with no broadcast at all. The calculator reports these correctly instead of blindly subtracting 2.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li><strong>192.168.1.10/24</strong> → network 192.168.1.0, broadcast 192.168.1.255, 254 usable hosts.</li>
+      <li><strong>10.0.0.1/30</strong> → a tiny 4-address subnet with 2 usable hosts, common for router links.</li>
+      <li><strong>203.0.113.5/31</strong> → both addresses usable, no broadcast — typical for WAN point-to-point links.</li>
+      <li><strong>198.51.100.7/32</strong> → a single host route.</li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/cidr-calculator/">📐 CIDR Calculator</a>
+    <a href="/tools/wildcard-calculator/">🔀 Wildcard Mask Calculator</a>
+    <a href="/tools/ip-binary-converter/">🔁 IPv4 ↔ Binary Converter</a>
+    <a href="/tools/vlsm-calculator/">🧩 VLSM Calculator</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/subnet-calculator.js"></script>
+</body>
+</html>
