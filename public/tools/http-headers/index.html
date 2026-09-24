@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HTTP Headers Checker – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Inspect the live HTTP response headers for any URL, including key security headers like HSTS, CSP, and X-Content-Type-Options." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/http-headers/" />
+<meta property="og:title" content="HTTP Headers Checker – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Inspect the live HTTP response headers for any URL, including key security headers like HSTS, CSP, and X-Content-Type-Options." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/http-headers/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>HTTP Headers Checker</span>
+</nav>
+<h1>📋 HTTP Headers Checker</h1>
+<p class="lede">Inspect the real HTTP response headers sent by any URL, with key security headers highlighted.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field">
+      <label for="headers-url">URL</label>
+      <input type="url" id="headers-url" placeholder="https://example.com" autocomplete="off" required />
+    </div>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <h3>Highlighted Headers</h3>
+    <div class="table-scroll">
+      <table id="highlighted-table"><thead><tr><th>Header</th><th>Value</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div id="missing-security" class="alert alert-warning" style="display:none;"></div>
+    <h3>All Response Headers</h3>
+    <div class="table-scroll">
+      <table id="all-headers-table"><thead><tr><th>Header</th><th>Value</th></tr></thead><tbody></tbody></table>
+    </div>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>This fetches the URL from our edge function and returns the actual response headers received. Some headers — like <code>Content-Security-Policy</code>, <code>Strict-Transport-Security</code>, and <code>X-Content-Type-Options</code> — are highlighted because they directly affect a site's security posture. Note that intermediary proxies, CDNs, or the fetching environment itself can sometimes normalize or strip certain headers, so this may not always be byte-identical to what a browser sees directly.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li><strong>Strict-Transport-Security</strong> tells browsers to always use HTTPS for this domain.</li>
+      <li><strong>Content-Security-Policy</strong> restricts what resources a page is allowed to load.</li>
+      <li><strong>Cache-Control</strong> and <strong>Content-Type</strong> are useful for debugging caching and content-rendering issues.</li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/http-status/">📶 HTTP Status Checker</a>
+    <a href="/tools/ssl-checker/">🔒 SSL/TLS Checker</a>
+    <a href="/tools/dns-lookup/">🌐 DNS Lookup</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/http-headers.js"></script>
+</body>
+</html>
