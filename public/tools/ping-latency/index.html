@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ping / Latency Test – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Run a real HTTP latency test against a host and see minimum, maximum, and average response times. Clearly labeled — this is not raw ICMP ping." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/ping-latency/" />
+<meta property="og:title" content="Ping / Latency Test – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Run a real HTTP latency test against a host and see minimum, maximum, and average response times. Clearly labeled — this is not raw ICMP ping." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/ping-latency/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>Ping / Latency</span>
+</nav>
+<h1>📡 Ping / Latency</h1>
+<p class="lede">Test HTTP response latency against a host. Browsers and edge functions cannot send raw ICMP packets, so this performs a real HTTP latency test and labels it clearly as such.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field">
+      <label for="ping-target">Target (hostname or URL)</label>
+      <input type="text" id="ping-target" placeholder="example.com" autocomplete="off" required />
+    </div>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <div class="badge" id="test-type-badge">HTTP latency test</div>
+    <div class="result-grid" style="margin-top:12px;">
+      <div class="result-item"><div class="label">Minimum</div><div class="value" id="res-min">—</div></div>
+      <div class="result-item"><div class="label">Average</div><div class="value" id="res-avg">—</div></div>
+      <div class="result-item"><div class="label">Maximum</div><div class="value" id="res-max">—</div></div>
+      <div class="result-item"><div class="label">Packet Loss</div><div class="value" id="res-loss">—</div></div>
+    </div>
+    <p class="hint" id="ping-note"></p>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>Real ICMP ping requires raw socket access, which is not available to browser JavaScript or to serverless edge functions like Cloudflare Workers. Instead, this tool sends several real HTTP requests to the target and measures how long each takes to respond — a genuine, useful latency signal for web-facing services, just measured at a different layer than ICMP. It is always labeled "HTTP latency test," never presented as ICMP ping.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li>Use this to compare response times between two CDN endpoints or regions.</li>
+      <li>High variance between minimum and maximum can indicate network congestion or an overloaded server.</li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/http-status/">📶 HTTP Status Checker</a>
+    <a href="/tools/http-headers/">📋 HTTP Headers Checker</a>
+    <a href="/tools/dns-lookup/">🌐 DNS Lookup</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/ping-latency.js"></script>
+</body>
+</html>
