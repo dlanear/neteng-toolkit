@@ -1,0 +1,80 @@
+// Reference database of well-known / commonly used ports.
+// This is a lookup/reference tool only — not a port scanner.
+export const PORTS = [
+  { port: 20, protocol: 'TCP', service: 'FTP (Data)', description: 'File Transfer Protocol — data channel' },
+  { port: 21, protocol: 'TCP', service: 'FTP (Control)', description: 'File Transfer Protocol — control channel' },
+  { port: 22, protocol: 'TCP', service: 'SSH', description: 'Secure Shell — remote login, SCP, SFTP' },
+  { port: 23, protocol: 'TCP', service: 'Telnet', description: 'Unencrypted remote terminal access (legacy)' },
+  { port: 25, protocol: 'TCP', service: 'SMTP', description: 'Simple Mail Transfer Protocol — outgoing mail' },
+  { port: 43, protocol: 'TCP', service: 'WHOIS', description: 'Domain/IP registration lookup' },
+  { port: 53, protocol: 'TCP/UDP', service: 'DNS', description: 'Domain Name System resolution' },
+  { port: 67, protocol: 'UDP', service: 'DHCP (Server)', description: 'Dynamic Host Configuration Protocol — server' },
+  { port: 68, protocol: 'UDP', service: 'DHCP (Client)', description: 'Dynamic Host Configuration Protocol — client' },
+  { port: 69, protocol: 'UDP', service: 'TFTP', description: 'Trivial File Transfer Protocol' },
+  { port: 80, protocol: 'TCP', service: 'HTTP', description: 'Hypertext Transfer Protocol — unencrypted web' },
+  { port: 88, protocol: 'TCP/UDP', service: 'Kerberos', description: 'Network authentication protocol' },
+  { port: 110, protocol: 'TCP', service: 'POP3', description: 'Post Office Protocol v3 — mail retrieval' },
+  { port: 111, protocol: 'TCP/UDP', service: 'RPCbind', description: 'Remote procedure call port mapper' },
+  { port: 119, protocol: 'TCP', service: 'NNTP', description: 'Network News Transfer Protocol' },
+  { port: 123, protocol: 'UDP', service: 'NTP', description: 'Network Time Protocol' },
+  { port: 135, protocol: 'TCP', service: 'MS RPC', description: 'Microsoft RPC endpoint mapper' },
+  { port: 137, protocol: 'UDP', service: 'NetBIOS Name Service', description: 'NetBIOS name resolution' },
+  { port: 138, protocol: 'UDP', service: 'NetBIOS Datagram', description: 'NetBIOS datagram service' },
+  { port: 139, protocol: 'TCP', service: 'NetBIOS Session', description: 'NetBIOS session service / SMB over NetBIOS' },
+  { port: 143, protocol: 'TCP', service: 'IMAP', description: 'Internet Message Access Protocol — mail retrieval' },
+  { port: 161, protocol: 'UDP', service: 'SNMP', description: 'Simple Network Management Protocol' },
+  { port: 162, protocol: 'UDP', service: 'SNMP Trap', description: 'SNMP trap/notification receiver' },
+  { port: 179, protocol: 'TCP', service: 'BGP', description: 'Border Gateway Protocol — inter-domain routing' },
+  { port: 194, protocol: 'TCP', service: 'IRC', description: 'Internet Relay Chat' },
+  { port: 389, protocol: 'TCP/UDP', service: 'LDAP', description: 'Lightweight Directory Access Protocol' },
+  { port: 443, protocol: 'TCP', service: 'HTTPS', description: 'HTTP over TLS/SSL — encrypted web' },
+  { port: 445, protocol: 'TCP', service: 'SMB', description: 'Server Message Block — Windows file/printer sharing' },
+  { port: 465, protocol: 'TCP', service: 'SMTPS', description: 'SMTP over implicit TLS' },
+  { port: 500, protocol: 'UDP', service: 'IKE / IPsec', description: 'Internet Key Exchange for IPsec VPNs' },
+  { port: 514, protocol: 'UDP', service: 'Syslog', description: 'System logging protocol' },
+  { port: 515, protocol: 'TCP', service: 'LPD', description: 'Line Printer Daemon' },
+  { port: 520, protocol: 'UDP', service: 'RIP', description: 'Routing Information Protocol' },
+  { port: 546, protocol: 'UDP', service: 'DHCPv6 (Client)', description: 'DHCP for IPv6 — client' },
+  { port: 547, protocol: 'UDP', service: 'DHCPv6 (Server)', description: 'DHCP for IPv6 — server' },
+  { port: 587, protocol: 'TCP', service: 'SMTP (Submission)', description: 'Mail submission with STARTTLS' },
+  { port: 631, protocol: 'TCP/UDP', service: 'IPP', description: 'Internet Printing Protocol / CUPS' },
+  { port: 636, protocol: 'TCP', service: 'LDAPS', description: 'LDAP over TLS/SSL' },
+  { port: 646, protocol: 'TCP', service: 'LDP', description: 'Label Distribution Protocol (MPLS)' },
+  { port: 989, protocol: 'TCP', service: 'FTPS (Data)', description: 'FTP over implicit TLS — data' },
+  { port: 990, protocol: 'TCP', service: 'FTPS (Control)', description: 'FTP over implicit TLS — control' },
+  { port: 993, protocol: 'TCP', service: 'IMAPS', description: 'IMAP over implicit TLS' },
+  { port: 995, protocol: 'TCP', service: 'POP3S', description: 'POP3 over implicit TLS' },
+  { port: 1194, protocol: 'UDP', service: 'OpenVPN', description: 'OpenVPN default port' },
+  { port: 1433, protocol: 'TCP', service: 'MS SQL Server', description: 'Microsoft SQL Server' },
+  { port: 1521, protocol: 'TCP', service: 'Oracle DB', description: 'Oracle database default listener' },
+  { port: 1701, protocol: 'UDP', service: 'L2TP', description: 'Layer 2 Tunneling Protocol' },
+  { port: 1723, protocol: 'TCP', service: 'PPTP', description: 'Point-to-Point Tunneling Protocol' },
+  { port: 1812, protocol: 'UDP', service: 'RADIUS (Auth)', description: 'RADIUS authentication' },
+  { port: 1813, protocol: 'UDP', service: 'RADIUS (Accounting)', description: 'RADIUS accounting' },
+  { port: 2049, protocol: 'TCP/UDP', service: 'NFS', description: 'Network File System' },
+  { port: 2222, protocol: 'TCP', service: 'SSH (Alt)', description: 'Common alternate SSH port' },
+  { port: 3128, protocol: 'TCP', service: 'HTTP Proxy (Squid)', description: 'Common HTTP proxy port' },
+  { port: 3306, protocol: 'TCP', service: 'MySQL / MariaDB', description: 'MySQL/MariaDB database default port' },
+  { port: 3389, protocol: 'TCP', service: 'RDP', description: 'Remote Desktop Protocol' },
+  { port: 4500, protocol: 'UDP', service: 'IPsec NAT-T', description: 'IPsec NAT traversal' },
+  { port: 5060, protocol: 'TCP/UDP', service: 'SIP', description: 'Session Initiation Protocol (VoIP signaling)' },
+  { port: 5061, protocol: 'TCP', service: 'SIP-TLS', description: 'SIP over TLS' },
+  { port: 5432, protocol: 'TCP', service: 'PostgreSQL', description: 'PostgreSQL database default port' },
+  { port: 5900, protocol: 'TCP', service: 'VNC', description: 'Virtual Network Computing remote desktop' },
+  { port: 6379, protocol: 'TCP', service: 'Redis', description: 'Redis in-memory data store default port' },
+  { port: 8080, protocol: 'TCP', service: 'HTTP Alternate', description: 'Common alternate HTTP / proxy port' },
+  { port: 8443, protocol: 'TCP', service: 'HTTPS Alternate', description: 'Common alternate HTTPS port' },
+  { port: 9200, protocol: 'TCP', service: 'Elasticsearch', description: 'Elasticsearch REST API default port' },
+  { port: 27017, protocol: 'TCP', service: 'MongoDB', description: 'MongoDB database default port' },
+];
+
+export function findByPort(port) {
+  const p = Number(port);
+  return PORTS.filter((entry) => entry.port === p);
+}
+
+export function findByService(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  return PORTS.filter((entry) => entry.service.toLowerCase().includes(q));
+}
