@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MAC Address / OUI Lookup – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Normalize a MAC address into common formats, extract its OUI, and identify the manufacturer where known. Runs entirely in your browser." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/mac-oui-lookup/" />
+<meta property="og:title" content="MAC Address / OUI Lookup – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Normalize a MAC address into common formats, extract its OUI, and identify the manufacturer where known. Runs entirely in your browser." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/mac-oui-lookup/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>MAC / OUI Lookup</span>
+</nav>
+<h1>🏷️ MAC / OUI Lookup</h1>
+<p class="lede">Enter a MAC address in any common format to normalize it and identify its manufacturer from the OUI. Runs entirely in your browser — the address is never sent anywhere.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field">
+      <label for="mac-input">MAC address</label>
+      <input type="text" id="mac-input" placeholder="00:11:22:33:44:55" autocomplete="off" required />
+      <p class="hint">Accepts colon, hyphen, Cisco dot, or plain formats.</p>
+    </div>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <div class="result-grid">
+      <div class="result-item"><div class="label">Colon format</div><div class="value" id="res-colon">—</div></div>
+      <div class="result-item"><div class="label">Hyphen format</div><div class="value" id="res-hyphen">—</div></div>
+      <div class="result-item"><div class="label">Cisco format</div><div class="value" id="res-cisco">—</div></div>
+      <div class="result-item"><div class="label">OUI</div><div class="value" id="res-oui">—</div></div>
+      <div class="result-item"><div class="label">Manufacturer</div><div class="value" id="res-vendor">—</div></div>
+      <div class="result-item"><div class="label">Address Type</div><div class="value" id="res-type">—</div></div>
+    </div>
+    <div class="alert alert-info" id="mac-note" style="display:none;"></div>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>The first 3 bytes (24 bits) of a MAC address form the OUI (Organizationally Unique Identifier), assigned by the IEEE to a manufacturer. This tool matches the OUI against a curated local reference database of common vendors, entirely client-side. If the OUI isn't in the local database, it clearly reports "Manufacturer not found" rather than guessing — the full IEEE registry has tens of thousands of entries and a complete offline copy is planned for a future phase.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li><strong>B8:27:EB:12:34:56</strong> → Raspberry Pi Foundation</li>
+      <li><strong>00:1C:B3:AA:BB:CC</strong> → Apple, Inc.</li>
+      <li>The second least-significant bit of the first byte indicates whether the address is "locally administered" (e.g. set by software) rather than burned in by the manufacturer.</li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/reverse-dns/">↩️ Reverse DNS Lookup</a>
+    <a href="/tools/port-lookup/">🔌 Port Lookup</a>
+    <a href="/tools/ip-binary-converter/">🔁 IPv4 ↔ Binary Converter</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/mac-oui-lookup.js"></script>
+</body>
+</html>
