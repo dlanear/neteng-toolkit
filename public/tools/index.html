@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>All Network Tools | NetEngToolkit</title>
+<meta name="description" content="Browse the full directory of free network engineering tools: subnet calculators, DNS lookups, diagnostics, and more." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/" />
+<meta property="og:title" content="All Network Tools | NetEngToolkit" />
+<meta property="og:description" content="Browse the full directory of free network engineering tools: subnet calculators, DNS lookups, diagnostics, and more." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; <span>Tools</span></nav>
+<h1>All Tools</h1>
+<p class="lede">Browse every NetEngToolkit tool, organized by category, or search below.</p>
+<div class="search-box" style="margin:0 0 32px;">
+  <label for="tools-search" class="visually-hidden">Search network tools</label>
+  <input type="text" id="tools-search" placeholder="Search network tools..." autocomplete="off" />
+</div>
+<p id="search-empty-state" class="alert alert-info" hidden>No tools match your search.</p>
+
+
+<section class="tool-category" id="ip-subnetting">
+  <h2>IP & Subnetting</h2>
+  <div class="tool-grid">
+    
+    <article class="tool-card" data-search="ipv4 subnet calculator subnet network broadcast mask cidr usable hosts ip & subnetting">
+      <span class="tool-card__icon" aria-hidden="true">🧮</span>
+      <h3>IPv4 Subnet Calculator</h3>
+      <p>Calculate network, broadcast, usable range, mask, and wildcard from an IP + CIDR or subnet mask.</p>
+      <a class="btn btn-secondary" href="/tools/subnet-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="cidr calculator cidr prefix notation reference table ip & subnetting">
+      <span class="tool-card__icon" aria-hidden="true">📐</span>
+      <h3>CIDR Calculator</h3>
+      <p>Break down a CIDR block into its network details, plus a full CIDR reference table.</p>
+      <a class="btn btn-secondary" href="/tools/cidr-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="vlsm calculator vlsm variable length subnet mask allocation departments ip & subnetting">
+      <span class="tool-card__icon" aria-hidden="true">🧩</span>
+      <h3>VLSM Calculator</h3>
+      <p>Allocate variable-length subnets from a base network to meet multiple host-count requirements.</p>
+      <a class="btn btn-secondary" href="/tools/vlsm-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="ip range calculator ip range start end cidr blocks ip & subnetting">
+      <span class="tool-card__icon" aria-hidden="true">↔️</span>
+      <h3>IP Range Calculator</h3>
+      <p>Find the total address count and the CIDR blocks that cover a start-to-end IP range.</p>
+      <a class="btn btn-secondary" href="/tools/ip-range-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="wildcard mask calculator wildcard mask acl ospf cisco ip & subnetting">
+      <span class="tool-card__icon" aria-hidden="true">🔀</span>
+      <h3>Wildcard Mask Calculator</h3>
+      <p>Convert between subnet masks and wildcard masks for ACLs and OSPF configuration.</p>
+      <a class="btn btn-secondary" href="/tools/wildcard-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="ipv4 ↔ binary converter binary octet convert ipv4 ip & subnetting">
+      <span class="tool-card__icon" aria-hidden="true">🔁</span>
+      <h3>IPv4 ↔ Binary Converter</h3>
+      <p>Convert an IPv4 address to its 32-bit binary form and back again, octet by octet.</p>
+      <a class="btn btn-secondary" href="/tools/ip-binary-converter/">Open Tool</a>
+    </article>
+  </div>
+</section>
+<section class="tool-category" id="dns-domain">
+  <h2>DNS & Domain</h2>
+  <div class="tool-grid">
+    
+    <article class="tool-card" data-search="dns lookup dns a aaaa cname mx ns txt soa caa srv records dns & domain">
+      <span class="tool-card__icon" aria-hidden="true">🌐</span>
+      <h3>DNS Lookup</h3>
+      <p>Query A, AAAA, CNAME, MX, NS, TXT, SOA, CAA, and SRV records for a domain.</p>
+      <a class="btn btn-secondary" href="/tools/dns-lookup/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="reverse dns lookup reverse dns ptr hostname ip dns & domain">
+      <span class="tool-card__icon" aria-hidden="true">↩️</span>
+      <h3>Reverse DNS Lookup</h3>
+      <p>Look up the PTR hostname associated with an IPv4 or IPv6 address.</p>
+      <a class="btn btn-secondary" href="/tools/reverse-dns/">Open Tool</a>
+    </article>
+  </div>
+</section>
+<section class="tool-category" id="diagnostics">
+  <h2>Network Diagnostics</h2>
+  <div class="tool-grid">
+    
+    <article class="tool-card" data-search="port lookup port tcp udp service well-known reference network diagnostics">
+      <span class="tool-card__icon" aria-hidden="true">🔌</span>
+      <h3>Port Lookup</h3>
+      <p>Look up well-known TCP/UDP ports by number or by service name.</p>
+      <a class="btn btn-secondary" href="/tools/port-lookup/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="mac / oui lookup mac address oui vendor manufacturer normalize network diagnostics">
+      <span class="tool-card__icon" aria-hidden="true">🏷️</span>
+      <h3>MAC / OUI Lookup</h3>
+      <p>Normalize a MAC address, extract its OUI, and identify the manufacturer where known.</p>
+      <a class="btn btn-secondary" href="/tools/mac-oui-lookup/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="ping / latency ping latency response time packet loss network diagnostics">
+      <span class="tool-card__icon" aria-hidden="true">📡</span>
+      <h3>Ping / Latency</h3>
+      <p>Run an HTTP-based latency test against a host and see min/avg/max response times.</p>
+      <a class="btn btn-secondary" href="/tools/ping-latency/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="http status checker http status code redirect 404 500 checker network diagnostics">
+      <span class="tool-card__icon" aria-hidden="true">📶</span>
+      <h3>HTTP Status Checker</h3>
+      <p>Check the live HTTP status code, response time, and redirect chain for any URL.</p>
+      <a class="btn btn-secondary" href="/tools/http-status/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="http headers checker http headers security hsts csp checker network diagnostics">
+      <span class="tool-card__icon" aria-hidden="true">📋</span>
+      <h3>HTTP Headers Checker</h3>
+      <p>Inspect response headers, including key security headers like HSTS and CSP.</p>
+      <a class="btn btn-secondary" href="/tools/http-headers/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="ssl/tls checker ssl tls certificate https checker network diagnostics">
+      <span class="tool-card__icon" aria-hidden="true">🔒</span>
+      <h3>SSL/TLS Checker</h3>
+      <p>Verify that a domain establishes a working HTTPS connection.</p>
+      <a class="btn btn-secondary" href="/tools/ssl-checker/">Open Tool</a>
+    </article>
+  </div>
+</section>
+<section class="tool-category" id="calculators">
+  <h2>Calculators</h2>
+  <div class="tool-grid">
+    
+    <article class="tool-card" data-search="bandwidth calculator bandwidth transfer time file size mbps gbps calculators">
+      <span class="tool-card__icon" aria-hidden="true">⏱️</span>
+      <h3>Bandwidth Calculator</h3>
+      <p>Estimate file transfer time from size and bandwidth, or work backward to required bandwidth.</p>
+      <a class="btn btn-secondary" href="/tools/bandwidth-calculator/">Open Tool</a>
+    </article>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+
+</body>
+</html>
