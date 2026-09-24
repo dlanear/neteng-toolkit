@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bandwidth Calculator – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Estimate file transfer time from file size and bandwidth, or work backward from a target transfer time to the bandwidth required." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/bandwidth-calculator/" />
+<meta property="og:title" content="Bandwidth Calculator – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Estimate file transfer time from file size and bandwidth, or work backward from a target transfer time to the bandwidth required." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/bandwidth-calculator/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>Bandwidth Calculator</span>
+</nav>
+<h1>⏱️ Bandwidth Calculator</h1>
+<p class="lede">Estimate how long a file transfer will take given a file size and bandwidth, or work backward to find the bandwidth needed to hit a target time.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field">
+      <label for="bw-mode">Mode</label>
+      <select id="bw-mode">
+        <option value="time">File Size + Bandwidth → Transfer Time</option>
+        <option value="bandwidth">File Size + Transfer Time → Required Bandwidth</option>
+      </select>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="bw-size">File size</label>
+        <input type="number" id="bw-size" min="0" step="any" placeholder="100" required />
+      </div>
+      <div class="field">
+        <label for="bw-size-unit">Unit</label>
+        <select id="bw-size-unit"><option>KB</option><option selected>MB</option><option>GB</option><option>TB</option></select>
+      </div>
+    </div>
+    <div class="field-row" id="bw-rate-fields">
+      <div class="field">
+        <label for="bw-rate">Bandwidth</label>
+        <input type="number" id="bw-rate" min="0" step="any" placeholder="100" required />
+      </div>
+      <div class="field">
+        <label for="bw-rate-unit">Unit</label>
+        <select id="bw-rate-unit"><option>bps</option><option>Kbps</option><option selected>Mbps</option><option>Gbps</option></select>
+      </div>
+    </div>
+    <div class="field" id="bw-time-field" style="display:none;">
+      <label for="bw-time">Target transfer time (seconds)</label>
+      <input type="number" id="bw-time" min="0" step="any" placeholder="60" />
+    </div>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <div class="result-grid" id="bw-results-time">
+      <div class="result-item"><div class="label">Transfer Time</div><div class="value" id="res-time">—</div></div>
+      <div class="result-item"><div class="label">Bits Transferred</div><div class="value" id="res-bits">—</div></div>
+      <div class="result-item"><div class="label">Bytes Transferred</div><div class="value" id="res-bytes">—</div></div>
+    </div>
+    <div class="result-grid" id="bw-results-bandwidth" style="display:none;">
+      <div class="result-item"><div class="label">Required (Mbps)</div><div class="value" id="res-mbps">—</div></div>
+      <div class="result-item"><div class="label">Required (Kbps)</div><div class="value" id="res-kbps">—</div></div>
+      <div class="result-item"><div class="label">Required (Gbps)</div><div class="value" id="res-gbps">—</div></div>
+    </div>
+    <div class="alert alert-info">Actual transfer speed is typically lower than the theoretical rate due to protocol overhead, network congestion, latency, and other real-world conditions.</div>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>This calculator converts your file size to bits and divides by your bandwidth (also in bits per second) to estimate transfer time — or rearranges the same formula to solve for the bandwidth needed to hit a target time. File size units use the decimal convention (1 KB = 1000 bytes), matching how bandwidth and file sizes are typically marketed and billed.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li><strong>100 MB over a 100 Mbps connection</strong> → roughly 8 seconds at full theoretical throughput.</li>
+      <li>Use reverse mode to find out what connection speed you'd need to transfer a 4 GB file in under 5 minutes.</li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/ping-latency/">📡 Ping / Latency</a>
+    <a href="/tools/http-status/">📶 HTTP Status Checker</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/bandwidth-calculator.js"></script>
+</body>
+</html>
