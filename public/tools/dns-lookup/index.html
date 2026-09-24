@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DNS Lookup Tool – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Look up A, AAAA, CNAME, MX, NS, TXT, SOA, CAA, and SRV DNS records for any domain, powered by DNS-over-HTTPS." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/dns-lookup/" />
+<meta property="og:title" content="DNS Lookup Tool – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Look up A, AAAA, CNAME, MX, NS, TXT, SOA, CAA, and SRV DNS records for any domain, powered by DNS-over-HTTPS." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/dns-lookup/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>DNS Lookup</span>
+</nav>
+<h1>🌐 DNS Lookup</h1>
+<p class="lede">Look up DNS records for a domain. Queries are sent to a DNS-over-HTTPS resolver — real results only, never fabricated.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field-row">
+      <div class="field">
+        <label for="dns-domain">Domain name</label>
+        <input type="text" id="dns-domain" placeholder="example.com" autocomplete="off" required />
+      </div>
+      <div class="field">
+        <label for="dns-type">Record type</label>
+        <select id="dns-type">
+          <option>A</option><option>AAAA</option><option>CNAME</option><option>MX</option>
+          <option>NS</option><option>TXT</option><option>SOA</option><option>CAA</option><option>SRV</option>
+        </select>
+      </div>
+    </div>
+    <p class="hint">This lookup is sent to a DNS-over-HTTPS resolver (cloudflare-dns.com) to perform the query — no data is stored.</p>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <div id="dns-empty" class="alert alert-info">No records found for this query.</div>
+    <div class="table-scroll">
+      <table id="dns-table" style="display:none;">
+        <thead><tr><th>Name</th><th>Type</th><th>TTL</th><th>Value</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>A browser cannot perform arbitrary DNS queries directly — DNS runs over UDP/TCP port 53, which isn't accessible from client-side JavaScript. This tool sends your query to a DNS-over-HTTPS (DoH) resolver, which performs the real lookup and returns the actual records in JSON form. If the resolver can't be reached or returns an error, that failure is reported clearly rather than shown as an empty or fake result.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li><strong>A</strong> records map a domain to an IPv4 address.</li>
+      <li><strong>MX</strong> records show which mail servers handle email for a domain, with priority.</li>
+      <li><strong>TXT</strong> records are often used for domain verification and SPF/DKIM/DMARC email authentication.</li>
+      <li><strong>NS</strong> records show which name servers are authoritative for a domain.</li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/reverse-dns/">↩️ Reverse DNS Lookup</a>
+    <a href="/tools/ssl-checker/">🔒 SSL/TLS Checker</a>
+    <a href="/tools/http-headers/">📋 HTTP Headers Checker</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/dns-lookup.js"></script>
+</body>
+</html>
