@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NetEngToolkit – Practical Network Engineering Tools</title>
+<meta name="description" content="Free tools for subnetting, IP addressing, DNS, diagnostics, networking calculations, and everyday network engineering tasks." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/" />
+<meta property="og:title" content="NetEngToolkit – Practical Network Engineering Tools" />
+<meta property="og:description" content="Free tools for subnetting, IP addressing, DNS, diagnostics, networking calculations, and everyday network engineering tasks." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/tools/">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<section class="hero">
+  <h1>NetEngToolkit</h1>
+  <p class="lede">Practical Network Engineering Tools</p>
+  <p class="lede">Free tools for subnetting, IP addressing, DNS, diagnostics, networking calculations, and everyday network engineering tasks.</p>
+  <div class="search-box">
+    <label for="home-search" class="visually-hidden">Search network tools</label>
+    <input type="text" id="home-search" placeholder="Search network tools..." autocomplete="off" />
+  </div>
+  <div class="btn-row" style="justify-content:center;">
+    <a href="/tools/" class="btn btn-primary">Explore Tools</a>
+  </div>
+</section>
+
+<section>
+  <h2>Popular Tools</h2>
+  <div class="tool-grid">
+    
+    <article class="tool-card" data-search="ipv4 subnet calculator subnet network broadcast mask cidr usable hosts">
+      <span class="tool-card__icon" aria-hidden="true">🧮</span>
+      <h3>IPv4 Subnet Calculator</h3>
+      <p>Calculate network, broadcast, usable range, mask, and wildcard from an IP + CIDR or subnet mask.</p>
+      <a class="btn btn-secondary" href="/tools/subnet-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="cidr calculator cidr prefix notation reference table">
+      <span class="tool-card__icon" aria-hidden="true">📐</span>
+      <h3>CIDR Calculator</h3>
+      <p>Break down a CIDR block into its network details, plus a full CIDR reference table.</p>
+      <a class="btn btn-secondary" href="/tools/cidr-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="vlsm calculator vlsm variable length subnet mask allocation departments">
+      <span class="tool-card__icon" aria-hidden="true">🧩</span>
+      <h3>VLSM Calculator</h3>
+      <p>Allocate variable-length subnets from a base network to meet multiple host-count requirements.</p>
+      <a class="btn btn-secondary" href="/tools/vlsm-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="ip range calculator ip range start end cidr blocks">
+      <span class="tool-card__icon" aria-hidden="true">↔️</span>
+      <h3>IP Range Calculator</h3>
+      <p>Find the total address count and the CIDR blocks that cover a start-to-end IP range.</p>
+      <a class="btn btn-secondary" href="/tools/ip-range-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="wildcard mask calculator wildcard mask acl ospf cisco">
+      <span class="tool-card__icon" aria-hidden="true">🔀</span>
+      <h3>Wildcard Mask Calculator</h3>
+      <p>Convert between subnet masks and wildcard masks for ACLs and OSPF configuration.</p>
+      <a class="btn btn-secondary" href="/tools/wildcard-calculator/">Open Tool</a>
+    </article>
+    <article class="tool-card" data-search="ipv4 ↔ binary converter binary octet convert ipv4">
+      <span class="tool-card__icon" aria-hidden="true">🔁</span>
+      <h3>IPv4 ↔ Binary Converter</h3>
+      <p>Convert an IPv4 address to its 32-bit binary form and back again, octet by octet.</p>
+      <a class="btn btn-secondary" href="/tools/ip-binary-converter/">Open Tool</a>
+    </article>
+  </div>
+</section>
+
+<section style="margin-top:40px;">
+  <h2>Categories</h2>
+  <div class="tool-grid">
+    
+    <article class="tool-card">
+      <h3>IP & Subnetting</h3>
+      <p>6 tools</p>
+      <a class="btn btn-secondary" href="/tools/#ip-subnetting">View Category</a>
+    </article>
+    <article class="tool-card">
+      <h3>DNS & Domain</h3>
+      <p>2 tools</p>
+      <a class="btn btn-secondary" href="/tools/#dns-domain">View Category</a>
+    </article>
+    <article class="tool-card">
+      <h3>Network Diagnostics</h3>
+      <p>6 tools</p>
+      <a class="btn btn-secondary" href="/tools/#diagnostics">View Category</a>
+    </article>
+    <article class="tool-card">
+      <h3>Calculators</h3>
+      <p>1 tools</p>
+      <a class="btn btn-secondary" href="/tools/#calculators">View Category</a>
+    </article>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+
+</body>
+</html>

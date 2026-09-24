@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://neteng-toolkit.pages.dev/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/about/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/privacy/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/terms/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/subnet-calculator/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/cidr-calculator/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/vlsm-calculator/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/ip-range-calculator/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/wildcard-calculator/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/ip-binary-converter/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/dns-lookup/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/reverse-dns/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/port-lookup/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/mac-oui-lookup/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/ping-latency/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/http-status/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/http-headers/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/ssl-checker/</loc></url>
+  <url><loc>https://neteng-toolkit.pages.dev/tools/bandwidth-calculator/</loc></url>
+</urlset>
