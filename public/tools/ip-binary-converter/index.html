@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IPv4 to Binary Converter – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Convert an IPv4 address to its 32-bit binary representation octet by octet, or convert binary back to a dotted-decimal IPv4 address." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/ip-binary-converter/" />
+<meta property="og:title" content="IPv4 to Binary Converter – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Convert an IPv4 address to its 32-bit binary representation octet by octet, or convert binary back to a dotted-decimal IPv4 address." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/ip-binary-converter/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>IPv4 ↔ Binary Converter</span>
+</nav>
+<h1>🔁 IPv4 ↔ Binary Converter</h1>
+<p class="lede">Convert an IPv4 address to binary, octet by octet, or convert a binary address back to dotted-decimal notation.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field">
+      <label for="bin-mode">Direction</label>
+      <select id="bin-mode">
+        <option value="to-binary">IPv4 → Binary</option>
+        <option value="to-ipv4">Binary → IPv4</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="bin-input">Value</label>
+      <input type="text" id="bin-input" placeholder="192.168.1.10" autocomplete="off" required />
+      <p class="hint">For Binary → IPv4, use dot-separated 8-bit groups, e.g. 11000000.10101000.00000001.00001010</p>
+    </div>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <div class="result-grid">
+      <div class="result-item"><div class="label">IPv4</div><div class="value" id="res-ip">—</div></div>
+      <div class="result-item"><div class="label">Binary</div><div class="value" id="res-binary">—</div></div>
+    </div>
+    <h3>Octet Breakdown</h3>
+    <div class="table-scroll">
+      <table><thead><tr><th>Octet</th><th>Decimal</th><th>Binary</th></tr></thead><tbody id="octet-body"></tbody></table>
+    </div>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>Each of the four octets in an IPv4 address is an 8-bit number (0–255). Converting to binary means expressing each octet in base 2, padded to 8 digits. This underlies every subnetting calculation — subnet masks, network boundaries, and wildcard masks are all binary operations under the hood.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li><strong>192</strong> → <code>11000000</code>, <strong>168</strong> → <code>10101000</code>, <strong>1</strong> → <code>00000001</code>, <strong>10</strong> → <code>00001010</code></li>
+      <li>Full address: <code>192.168.1.10</code> → <code>11000000.10101000.00000001.00001010</code></li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/subnet-calculator/">🧮 IPv4 Subnet Calculator</a>
+    <a href="/tools/wildcard-calculator/">🔀 Wildcard Mask Calculator</a>
+    <a href="/tools/cidr-calculator/">📐 CIDR Calculator</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/ip-binary-converter.js"></script>
+</body>
+</html>
