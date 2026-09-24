@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HTTP Status Checker – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Check the live HTTP status code, response time, and full redirect chain for any URL." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/http-status/" />
+<meta property="og:title" content="HTTP Status Checker – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Check the live HTTP status code, response time, and full redirect chain for any URL." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/http-status/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>HTTP Status Checker</span>
+</nav>
+<h1>📶 HTTP Status Checker</h1>
+<p class="lede">Check the real, live HTTP status code for a URL, including the full redirect chain and response time.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field">
+      <label for="status-url">URL</label>
+      <input type="url" id="status-url" placeholder="https://example.com" autocomplete="off" required />
+    </div>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <div class="result-grid">
+      <div class="result-item"><div class="label">Status Code</div><div class="value" id="res-code">—</div></div>
+      <div class="result-item"><div class="label">Status Message</div><div class="value" id="res-message">—</div></div>
+      <div class="result-item"><div class="label">Response Time</div><div class="value" id="res-time">—</div></div>
+      <div class="result-item"><div class="label">Final URL</div><div class="value" id="res-final">—</div></div>
+    </div>
+    <h3>Redirect Chain</h3>
+    <div class="table-scroll">
+      <table id="redirect-table"><thead><tr><th>#</th><th>URL</th><th>Status</th></tr></thead><tbody></tbody></table>
+    </div>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>This performs a real HTTP request to the URL from our edge function and reports the actual status code returned — nothing is simulated. Redirects (3xx responses with a Location header) are followed manually, one hop at a time, so you can see the full chain rather than just the final destination. If the target can't be reached at all, that failure is reported explicitly rather than shown as a fake status.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li><strong>200 OK</strong> — the request succeeded.</li>
+      <li><strong>301 / 302</strong> — the URL redirects elsewhere; the chain shows every hop.</li>
+      <li><strong>404 Not Found</strong> — the server has no resource at that URL.</li>
+      <li><strong>500 / 502 / 503</strong> — server-side errors, often transient.</li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/http-headers/">📋 HTTP Headers Checker</a>
+    <a href="/tools/ssl-checker/">🔒 SSL/TLS Checker</a>
+    <a href="/tools/ping-latency/">📡 Ping / Latency</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/http-status.js"></script>
+</body>
+</html>
