@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy | NetEngToolkit</title>
+<meta name="description" content="How NetEngToolkit handles your data: what runs locally in your browser, and what is sent to a lookup service and why." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/privacy/" />
+<meta property="og:title" content="Privacy Policy | NetEngToolkit" />
+<meta property="og:description" content="How NetEngToolkit handles your data: what runs locally in your browser, and what is sent to a lookup service and why." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/privacy/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; <span>Privacy Policy</span></nav>
+<h1>Privacy Policy</h1>
+<div class="card">
+      <p class="lede">This page explains what happens to the information you enter into NetEngToolkit's tools.</p>
+      <h2>Calculations that run locally</h2>
+      <p>Subnet, CIDR, VLSM, IP range, wildcard mask, binary conversion, bandwidth, port lookup, and MAC/OUI lookup tools run entirely in your browser. The values you enter into these tools are never transmitted to our servers or any third party.</p>
+      <h2>Tools that require an external lookup</h2>
+      <p>DNS Lookup and Reverse DNS Lookup send your query to a DNS-over-HTTPS resolver operated by Cloudflare in order to perform a real DNS query. Ping/Latency, HTTP Status, HTTP Headers, and SSL/TLS Checker send a request, from our server, to the host or URL you specify, in order to report genuine results. We do not store the domains, IPs, MAC addresses, or URLs you enter beyond what is needed to serve the immediate request.</p>
+      <h2>No accounts, no unnecessary data collection</h2>
+      <p>NetEngToolkit does not require an account to use any Phase 1 tool. We store your light/dark theme preference in your browser's local storage so it persists between visits — this stays on your device and is not sent to us.</p>
+      <h2>Changes to this policy</h2>
+      <p>As NetEngToolkit adds tools in future phases, this policy will be updated to reflect any new data handling.</p>
+    </div>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+
+</body>
+</html>
