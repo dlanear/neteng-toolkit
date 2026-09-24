@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CIDR Calculator – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Break down any CIDR block into its network, broadcast, usable host range, and subnet mask, plus a full /0 to /32 CIDR reference table." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/cidr-calculator/" />
+<meta property="og:title" content="CIDR Calculator – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Break down any CIDR block into its network, broadcast, usable host range, and subnet mask, plus a full /0 to /32 CIDR reference table." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/cidr-calculator/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>CIDR Calculator</span>
+</nav>
+<h1>📐 CIDR Calculator</h1>
+<p class="lede">Enter an IP address and CIDR prefix to see the full network breakdown, plus a complete CIDR-to-subnet-mask reference table below.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field">
+      <label for="cidr-input">IP address / CIDR prefix</label>
+      <input type="text" id="cidr-input" name="cidr" placeholder="10.10.10.15/20" autocomplete="off" required />
+    </div>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <div class="result-grid" id="result-grid">
+      
+      <div class="result-item"><div class="label">IP</div><div class="value" id="res-ip">—</div></div>
+      <div class="result-item"><div class="label">Prefix</div><div class="value" id="res-prefix">—</div></div>
+      <div class="result-item"><div class="label">Subnet Mask</div><div class="value" id="res-mask">—</div></div>
+      <div class="result-item"><div class="label">Network</div><div class="value" id="res-network">—</div></div>
+      <div class="result-item"><div class="label">Broadcast</div><div class="value" id="res-broadcast">—</div></div>
+      <div class="result-item"><div class="label">First Address</div><div class="value" id="res-first">—</div></div>
+      <div class="result-item"><div class="label">Last Address</div><div class="value" id="res-last">—</div></div>
+      <div class="result-item"><div class="label">Total Addresses</div><div class="value" id="res-total">—</div></div>
+      <div class="result-item"><div class="label">Usable Hosts</div><div class="value" id="res-usable">—</div></div>
+      <div class="result-item"><div class="label">Wildcard Mask</div><div class="value" id="res-wildcard">—</div></div>
+    </div>
+    <h3>Binary</h3>
+    <p class="mono" id="bin-out">—</p>
+    <h3>CIDR Reference Table</h3>
+    <div class="table-scroll">
+      <table id="cidr-table">
+        <thead><tr><th>CIDR</th><th>Subnet Mask</th><th>Total Addresses</th><th>Usable Hosts</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>CIDR (Classless Inter-Domain Routing) notation expresses a subnet mask as a prefix length — the number of leading 1 bits. <code>/24</code> means the first 24 bits are network bits, equivalent to a 255.255.255.0 mask. This tool converts the prefix to a full mask and calculates the resulting network boundaries.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li><strong>10.10.10.15/20</strong> → network 10.10.0.0, 4094 usable hosts.</li>
+      <li><strong>172.16.5.1/16</strong> → a full Class B–sized block, 65,534 usable hosts.</li>
+      <li>Use the reference table to quickly recall how many hosts a given prefix provides without doing the math by hand.</li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/subnet-calculator/">🧮 IPv4 Subnet Calculator</a>
+    <a href="/tools/vlsm-calculator/">🧩 VLSM Calculator</a>
+    <a href="/tools/ip-range-calculator/">↔️ IP Range Calculator</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/cidr-calculator.js"></script>
+</body>
+</html>
