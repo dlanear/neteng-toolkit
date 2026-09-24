@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Port Lookup Tool – Free Network Tool | NetEngToolkit</title>
+<meta name="description" content="Look up well-known TCP and UDP ports by number or service name — a reference tool, not a port scanner." />
+<link rel="canonical" href="https://neteng-toolkit.pages.dev/tools/port-lookup/" />
+<meta property="og:title" content="Port Lookup Tool – Free Network Tool | NetEngToolkit" />
+<meta property="og:description" content="Look up well-known TCP and UDP ports by number or service name — a reference tool, not a port scanner." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://neteng-toolkit.pages.dev/tools/port-lookup/" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0a5cad" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<script>
+  // Apply theme before paint to avoid a flash of the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem('net-eng-toolkit-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark" aria-hidden="true">NE</span>
+      <span>NetEngToolkit</span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/tools/" aria-current="page">Tools</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌓</span>
+        <span class="theme-toggle__label">Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <div class="container">
+    
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/tools/">Tools</a> &rsaquo; <span>Port Lookup</span>
+</nav>
+<h1>🔌 Port Lookup</h1>
+<p class="lede">Search the common TCP/UDP port reference database by port number or service name. This is a lookup tool, not a scanner — it never probes any live host.</p>
+
+<section class="card" aria-labelledby="input-heading">
+  <h2 id="input-heading">Input</h2>
+  <form id="tool-form" novalidate>
+    
+    <div class="field">
+      <label for="port-query">Port number or service name</label>
+      <input type="text" id="port-query" placeholder="443 or HTTPS" autocomplete="off" required />
+    </div>
+  
+    <div class="btn-row">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+      <button type="reset" class="btn btn-secondary" id="reset-btn">Reset</button>
+    </div>
+  </form>
+  <div id="form-error" class="alert alert-error" role="alert" style="display:none;"></div>
+</section>
+
+<section class="card results" id="results-card" aria-labelledby="results-heading">
+  <h2 id="results-heading">Results</h2>
+  <div id="results-body">
+    
+    <div id="port-empty" class="alert alert-info" style="display:none;">No matching ports found in the reference database.</div>
+    <div class="table-scroll">
+      <table id="port-table" style="display:none;">
+        <thead><tr><th>Port</th><th>Protocol</th><th>Service</th><th>Description</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-secondary copy-btn" id="copy-btn">Copy Results</button>
+  </div>
+  <p role="status" aria-live="polite" class="visually-hidden" id="live-status"></p>
+</section>
+
+<section class="card">
+  <h2>How It Works</h2>
+  
+    <p>This tool searches a bundled reference database of well-known and commonly used TCP/UDP ports entirely in your browser — no network request is made, and no host is ever contacted or scanned. It's meant for quickly recalling what a given port is typically used for during troubleshooting or documentation.</p>
+  
+</section>
+
+<section class="card">
+  <h2>Examples &amp; Common Use Cases</h2>
+  
+    <ul>
+      <li><strong>22</strong> → SSH</li>
+      <li><strong>53</strong> → DNS</li>
+      <li><strong>443</strong> → HTTPS</li>
+      <li><strong>3389</strong> → RDP</li>
+      <li>Search "SQL" to find database-related ports like MySQL (3306) and MS SQL Server (1433).</li>
+    </ul>
+  
+</section>
+
+
+<section aria-labelledby="related-heading">
+  <h2 id="related-heading">Related Tools</h2>
+  <div class="related-tools">
+    <a href="/tools/dns-lookup/">🌐 DNS Lookup</a>
+    <a href="/tools/http-status/">📶 HTTP Status Checker</a>
+    <a href="/tools/mac-oui-lookup/">🏷️ MAC / OUI Lookup</a>
+  </div>
+</section>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>© 2026 NetEngToolkit. Practical network engineering tools.</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/tools/">All Tools</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/search.js"></script>
+<script type="module" src="/assets/js/tools/port-lookup.js"></script>
+</body>
+</html>
